@@ -19,7 +19,8 @@ server:
 
 spring:
   profiles:
-    active: h2
+    active: mysql
+
   thymeleaf:
     cache: true
     encoding: utf-8
@@ -47,8 +48,8 @@ mybatis:
 
 shenyu:
   register:
-    registerType: http #http #zookeeper #etcd #nacos #consul
-    serverLists: #localhost:2181 #http://localhost:2379 #localhost:8848
+    registerType: zookeeper  #http #etcd #nacos #consul
+    serverLists:  localhost:2181 #http://localhost:2379   #localhost:8848
     props:
       sessionTimeout: 5000
       connectionTimeout: 2000
@@ -58,14 +59,14 @@ shenyu:
       scheduledTime: 10
       nacosNameSpace: ShenyuRegisterCenter
   sync:
-    websocket:
-      enabled: true
-      messageMaxSize: 10240
-      allowOrigins: ws://localhost:9095;ws://localhost:9195;
-#      zookeeper:
-#        url: localhost:2181
-#        sessionTimeout: 5000
-#        connectionTimeout: 2000
+#    websocket:
+#      enabled: true
+#      messageMaxSize: 10240
+#      allowOrigins: ws://localhost:9095;ws://localhost:9195;
+      zookeeper:
+        url: localhost:2181
+        sessionTimeout: 5000
+        connectionTimeout: 2000
 #      http:
 #        enabled: true
 #      nacos:

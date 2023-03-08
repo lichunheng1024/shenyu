@@ -47,7 +47,7 @@ import java.util.List;
  * for execute schema sql file.
  */
 @Component
-@ConditionalOnExpression("'${shenyu.database.dialect}' == 'h2'")
+@ConditionalOnExpression("'${shenyu.database.dialect}' == 'mysql'")
 public class LocalDataSourceLoader implements InstantiationAwareBeanPostProcessor {
 
     private static final Logger LOG = LoggerFactory.getLogger(LocalDataSourceLoader.class);

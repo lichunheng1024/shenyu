@@ -43,8 +43,8 @@ public class DataBaseConfiguration {
      */
     @Bean
     @ConditionalOnMissingBean(value = DataBaseProperties.class)
-    public DataBaseProperties dataBaseProperties(@Value("${shenyu.database.dialect:h2}") final String dialect,
-                                                   @Value("${shenyu.database.init_script:sql-script/h2/schema.sql}") final String initScript,
+    public DataBaseProperties dataBaseProperties(@Value("${shenyu.database.dialect:mysql}") final String dialect,
+                                                   @Value("${shenyu.database.init_script:sql-script/mysql/schema.sql}") final String initScript,
                                                    @Value("${shenyu.database.init_enable:true}") final Boolean initEnable) {
         DataBaseProperties dataSourceProperties = new DataBaseProperties();
         dataSourceProperties.setDialect(dialect);
@@ -62,7 +62,7 @@ public class DataBaseConfiguration {
     public DatabaseIdProvider databaseIdProvider() {
         Properties properties = new Properties();
         properties.setProperty("Oracle", "oracle");
-        properties.setProperty("MySQL", "mysql");
+        properties.setProperty("MySQL", "sql-script/mysql");
         properties.setProperty("PostgreSQL", "postgresql");
         properties.setProperty("H2", "h2");
         VendorDatabaseIdProvider databaseIdProvider = new VendorDatabaseIdProvider();
